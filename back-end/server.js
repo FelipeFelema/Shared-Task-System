@@ -2,6 +2,7 @@ import express from 'express'
 import dotenv from 'dotenv'
 import cors from 'cors'
 import tarefasRoutes from './routes/tarefas.js'
+import usuariosRouter from './routes/usuarios.js'
 
 
 // Le o arquivo .env e carrega as variáveis de ambiente nele definidas para o process.env, evita deixar senhas e configs visíveis no código
@@ -17,6 +18,8 @@ app.use(cors())
 // Faz o servidor entender requisições com JSON (ex: req.body)
 app.use(express.json())
 
+
+app.use(usuariosRouter) // Ativa as rotas definidas no roteador
 
 // Diz ao Express para usar as rotas importadas de routes/tarefas.js, e adiciona o prefixo /tarefas a todas elas.
 app.use('/tarefas', tarefasRoutes)
